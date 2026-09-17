@@ -1,0 +1,170 @@
+@page
+@model FineUI.Core.QuickStart.Pages.IndexModel
+@{
+    ViewBag.Title = "首页";
+    var F = @Html.F();
+}
+
+@section head {
+
+    <link type="text/css" rel="stylesheet" href="~/res/css/index.css" />
+
+}
+
+@section body {
+
+    <div id="maincontent">
+        <h2>FineUI.Core</h2>
+        .NET 企业级全栈 UI 框架
+
+        <br />
+        <h2>支持的浏览器</h2>
+        Chrome、Firefox、Edge、Safari
+
+        <br />
+        <h2>授权协议</h2>
+        商业授权
+
+        <br />
+        <h2>相关链接</h2>
+        <ul class="list">
+            <li>
+                首页：<a target="_blank" href="http://fineui.com/core/">http://fineui.com/core/</a>
+            </li>
+            <li>
+                示例：<a target="_blank" href="https://fineui.com/core/demo/">https://fineui.com/core/demo/</a>
+            </li>
+            <li>
+                更新：<a target="_blank" href="http://fineui.com/versions/">http://fineui.com/versions/</a>
+            </li>
+            <li>
+                社区：<a target="_blank" href="http://fineui.com/fans/">http://fineui.com/fans/</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <f:Panel ID="mainPanel" Layout="Region" CssClass="mainpanel" ShowBorder="false" ShowHeader="false" IsViewPort="true">
+        <Items>
+            <f:Panel ID="sidebarRegion" CssClass="sidebarregion" RegionPosition="Left" ShowBorder="false" Width="260" ShowHeader="false"
+                     EnableCollapse="false" Collapsed="false" Layout="VBox" RegionSplit="true" RegionSplitIcon="false" RegionSplitWidth="3" RegionSplitTransparent="true">
+                <Items>
+                    <f:ContentPanel ID="sideheaderTopPanel" CssClass="topregion" ShowBorder="false" ShowHeader="false">
+                        <div id="sideheader" class="f-widget-header f-mainheader">
+                            <a class="logo" href="@Url.Content("~/")" title="FineUI.Core快速入门">FineUI.Core快速入门</a>
+                            <div class="logo-subtitle">RazorForms</div>
+                        </div>
+                    </f:ContentPanel>
+                    <f:Panel ID="leftPanel" CssClass="leftregion" BoxFlex="1" ShowBorder="false" ShowHeader="false" Layout="Fit">
+                        <Items>
+                            <f:Tree ID="treeMenu" ShowBorder="false" ShowHeader="false" HideHScrollbar="true" HideVScrollbar="true" ExpanderToRight="true" HeaderStyle="true" AllHeaderStyle="true">
+                                <Nodes>
+                                    <f:TreeNode Text="默认分类" Expanded="true">
+                                        <f:TreeNode Text="开始页面" NavigateUrl="@Url.Content("~/Hello")"></f:TreeNode>
+                                        <f:TreeNode Text="登录页面" NavigateUrl="@Url.Content("~/Login")"></f:TreeNode>
+                                        <f:TreeNode Text="电影管理" NavigateUrl="@Url.Content("~/Movie")"></f:TreeNode>
+                                    </f:TreeNode>
+                                </Nodes>
+                            </f:Tree>
+                        </Items>
+                    </f:Panel>
+                </Items>
+            </f:Panel>
+            <f:Panel ID="bodyRegion" CssClass="bodyregion" RegionPosition="Center" ShowBorder="false" ShowHeader="false" Layout="VBox">
+                <Items>
+                    <f:ContentPanel ID="topPanel" CssClass="topregion" ShowBorder="false" ShowHeader="false">
+                        <div id="header" class="f-widget-header f-mainheader">
+                            <div class="header-left">
+                            </div>
+                            <div class="header-right">
+                                <f:Button ID="btnThemeSelect" EnableDefaultCorner="false" EnableDefaultState="false" IconFont="_Skin" IconAlign="Top" CssClass="icononlyaction themes" ToolTip="主题仓库">
+                                    <Listeners>
+                                        <f:Listener Event="click" Handler="onThemeSelectClick"></f:Listener>
+                                    </Listeners>
+                                </f:Button>
+                                <f:Button EnableDefaultCorner="false" EnableDefaultState="false" IconUrl="@Url.Content("~/res/images/my_face_80.jpg")" IconAlign="Left" CssClass="userpicaction" Text="三生石上">
+                                    <Menu>
+                                        <Items>
+                                            <f:MenuButton IconFont="_User" Text="个人信息" ClickHandler="onNotImplementedClick">
+                                            </f:MenuButton>
+                                            <f:MenuButton IconFont="_SignOut" Text="安全退出" ClickHandler="onNotImplementedClick">
+                                            </f:MenuButton>
+                                        </Items>
+                                    </Menu>
+                                </f:Button>
+                            </div>
+                        </div>
+                    </f:ContentPanel>
+                    <f:TabStrip ID="mainTabStrip" CssClass="centerregion" ShowInkBar="true" InkBarPosition="Bottom" BoxFlex="1" ShowBorder="true" EnableTabCloseMenu="true">
+                        <Tabs>
+                            <f:Tab ID="tabHomepage" Title="首页" IconFont="_Home" EnableIFrame="false" BodyPadding="10" ContentEl="#maincontent">
+                            </f:Tab>
+                        </Tabs>
+                    </f:TabStrip>
+                </Items>
+            </f:Panel>
+        </Items>
+    </f:Panel>
+
+    <f:Window ID="windowThemeRoller" Hidden="true" EnableResize="true" EnableMaximize="true" EnableClose="true" Height="600" Width="850"
+              IsModal="true" ClearIFrameAfterClose="false" IFrameUrl="@Url.Content("~/Themes")" EnableIFrame="true" Title="主题仓库"></f:Window>
+
+    @{
+
+    }
+
+}
+
+@section script {
+
+    <script>
+
+        // 点击主题仓库
+        function onThemeSelectClick(event) {
+            F.ui.windowThemeRoller.show();
+        }
+
+        // 尚未实现的菜单项
+        function onNotImplementedClick(event) {
+            F.alert('尚未实现');
+        }
+
+        // 通知框
+        function notify(msg) {
+            F.notify({
+                message: msg,
+                messageIcon: 'information',
+                target: '_top',
+                header: false,
+                displayMilliseconds: 3 * 1000,
+                positionX: 'center',
+                positionY: 'center'
+            });
+        }
+
+        // 页面控件初始化完毕后，会调用用户自定义的onReady函数
+        F.ready(function () {
+
+            if (!F.ui.treeMenu) return;
+
+
+            // 初始化主框架中的树(或者Accordion+Tree)和选项卡互动，以及地址栏的更新
+            // treeMenu： 主框架中的树控件实例，或者内嵌树控件的手风琴控件实例
+            // mainTabStrip： 选项卡实例
+            // options: 参数
+            // options.updateHash： 切换Tab时，是否更新地址栏Hash值（默认值：true）
+            // options.refreshWhenExist： 添加选项卡时，如果选项卡已经存在，是否刷新内部IFrame（默认值：false）
+            // options.refreshWhenTabChange: 切换选项卡时，是否刷新内部IFrame（默认值：false）
+            // options.maxTabCount: 最大允许打开的选项卡数量
+            // options.maxTabMessage: 超过最大允许打开选项卡数量时的提示信息
+            // options.beforeNodeClick: 节点点击事件之前执行（返回false则不执行点击事件）
+            // options.beforeTabAdd: 添加选项卡之前执行（返回false则不添加选项卡）
+            // options.moveToEnd: 将选项卡移到尾部（如果选项卡已存在，则不改变位置，默认值：false）
+            F.initTreeTabStrip(F.ui.treeMenu, F.ui.mainTabStrip, {
+                maxTabCount: 10,
+                maxTabMessage: '请先关闭一些选项卡（最多允许打开 10 个）！'
+            });
+
+        });
+    </script>
+}

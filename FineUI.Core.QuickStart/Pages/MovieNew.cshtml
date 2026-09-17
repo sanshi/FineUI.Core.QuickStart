@@ -1,0 +1,42 @@
+@page
+@model FineUI.Core.QuickStart.MovieNewModel
+@{
+    ViewData["Title"] = "MovieNew";
+}
+
+@section body {
+
+    <f:Panel ID="Panel1" ShowBorder="false" ShowHeader="false" AutoScroll="true" IsViewPort="true" Layout="Fit">
+        <Toolbars>
+            <f:Toolbar Position="Bottom" ToolbarAlign="Center">
+                <Items>
+                    <f:Button ID="BtnClose" IconFont="Close" Text="关闭" ClickHandler="onCloseClick"></f:Button>
+                    <f:ToolbarSeparator></f:ToolbarSeparator>
+                    <f:Button ID="btnSaveClose" _ValidateForms="SimpleForm1" IconFont="Save" Text="保存后关闭"
+                              OnClick="btnSaveClose_Click" OnClickFields="SimpleForm1"></f:Button>
+                </Items>
+            </f:Toolbar>
+        </Toolbars>
+        <Items>
+            <f:SimpleForm ID="SimpleForm1" ShowBorder="false" ShowHeader="false" BodyPadding="10">
+                <Items>
+                    <f:TextBox For="Movie.Title"></f:TextBox>
+                    <f:DatePicker For="Movie.ReleaseDate"></f:DatePicker>
+                    <f:TextBox For="Movie.Genre"></f:TextBox>
+                    <f:NumberBox For="Movie.Price"></f:NumberBox>
+                </Items>
+            </f:SimpleForm>
+        </Items>
+    </f:Panel>
+
+}
+
+@section script {
+    <script>
+        // 点击「关闭」：收起包着本页的那个窗体
+        // 本页运行在窗体内部的 IFrame 里，拿不到外层列表页的 F.ui.Window1，用 F.activeWindow
+        function onCloseClick(event) {
+            F.activeWindow.hide();
+        }
+    </script>
+}

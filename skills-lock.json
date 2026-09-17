@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "skills": {
+    "fineui-button": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-button/SKILL.md",
+      "computedHash": "0539705a5116260974ee9c528541554adcd9b3e650cc67417d7f0f0dade418a8"
+    },
+    "fineui-buttons-toolbar": {
+      "source": "sanshi/fineui-skills",
+      "sourceType": "github",
+      "skillPath": "skills/fineui-buttons-toolbar/SKILL.md",
+      "computedHash": "8537a772765ab1da93a58d75af3b37c6b309053ee1e0e4a51344e573d1680044"
+    },
+    "fineui-datalist": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-datalist/SKILL.md",
+      "computedHash": "3586ee30538a449e9efd2a9716e605b3b8f05bffd053aeba5bfabb024fec419d"
+    },
+    "fineui-form": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-form/SKILL.md",
+      "computedHash": "32d2d144042531be67169417b7267135a3391a2fcabad0c3cb0e5f762fedd7d5"
+    },
+    "fineui-foundation": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-foundation/SKILL.md",
+      "computedHash": "94307788b9a6df950bdb30b8360f3fa17ac93ea1b6a691bb3b97b50b313992cc"
+    },
+    "fineui-grid": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-grid/SKILL.md",
+      "computedHash": "890b84ff58bd15837d863d1a36e03131e97c40166b54f545c7fca2fe95d99638"
+    },
+    "fineui-layout": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-layout/SKILL.md",
+      "computedHash": "feb405c6e7078169caac40aa4b73334bb2bfd05f11c31e733b42a23859b6bf94"
+    },
+    "fineui-panel": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-panel/SKILL.md",
+      "computedHash": "69605cf186b25ae02b39fe47823aea38cf49c8b106d20e04b0e36406bd8830a4"
+    },
+    "fineui-theming": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-theming/SKILL.md",
+      "computedHash": "b928c7decd4aa708202dc03281bf81c25f7135acff37c3e4fd29e5d87b03eb24"
+    },
+    "fineui-tree": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-tree/SKILL.md",
+      "computedHash": "0615a5163c2680ca75ae6d16161ea62b3c536ff6b565091ba7602e4dc7fa36bf"
+    },
+    "fineui-upgrade": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-upgrade/SKILL.md",
+      "computedHash": "f0abddabb2fc91b3f5ed4fa2c556809f9e6be9cbe7b701437469fdff3ea649e7"
+    },
+    "fineui-window": {
+      "source": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceUrl": "https://gitee.com/sanshi/fineui-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/fineui-window/SKILL.md",
+      "computedHash": "59116be1fb987e902f03f5cb8eb680a7f38a9ce032aadf1e10b68319e8b40a0b"
+    }
+  }
+}

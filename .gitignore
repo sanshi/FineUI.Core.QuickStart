@@ -1,0 +1,55 @@
+# ---- .NET / Visual Studio ----
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Bb]uild/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# bin 目录只包含可由还原和编译重新生成的文件。
+bin/
+
+# ---- 日志 / 临时文件 ----
+*.log
+*.tmp
+Thumbs.db
+
+# ---- 数据库本地文件（如有）----
+*.mdf
+*.ldf
+
+
+
+.claude/
+.gemini/
+.agents/
+.cursor/
+
+# FineUI 本地源码覆盖
+Directory.Build.local.props
+.local/
+NuGet.Config
+
+# FineUI 公共仓库本地文件
+[Bb]in/
+[Oo]bj/
+target/
+[Pp]ackages/
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.iml
+*.nupkg
+*.snupkg
+*.mv.db
+*.trace.db
+Directory.Build.local.props
+NuGet.Config
+.local/
+FineUI*.lic*.config
+FineUI.Enterprise.props
