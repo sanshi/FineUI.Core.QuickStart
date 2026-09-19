@@ -12,24 +12,31 @@
 
 适合作为学习 FineUI.Core、或快速起步搭建自己项目的模板。
 
----
-
-## 一、环境要求
+## 环境要求
 
 | 依赖 | 说明 |
 |------|------|
 | .NET 8 SDK | 项目 `TargetFramework` 为 `net8.0` |
 | SQL Server LocalDB | 随 Visual Studio 一起安装的轻量本地数据库（实例名 `MSSQLLocalDB`） |
-| Visual Studio 2022 或 `dotnet` CLI | 二选一即可运行 |
-
-> 项目文件已经声明 `FineUI.Core` NuGet 依赖。正常联网构建时会从公共软件包仓库自动还原，仓库不提交 FineUI DLL。
+| Visual Studio 或 `dotnet` CLI | 二选一即可运行 |
 
 项目调用 `AddFineUI` 后，FineUI.Core 会自动登记 `JArray` / `JObject` 模型绑定器，并在启用 RazorForms 时
 登记所需过滤器。应用仍需保留 `AddRazorPages().AddNewtonsoftJson()`、`UseFineUI()` 和 Razor Pages 路由。
 
----
+## 依赖方式
 
-## 二、LocalDB 简介与确认数据库已启动
+项目文件已声明从公共软件包仓库获取的 NuGet 包 `FineUI.Core`。正常联网构建时，包管理器会自动还原依赖；仓库不包含 FineUI.Core.dll、FineUI.Pro.dll、fineui-java.jar，也不包含 FineUI 框架源码。
+
+## 构建
+
+安装 .NET 8 SDK 后，在仓库根目录运行：
+
+```powershell
+dotnet restore FineUI.Core.QuickStart.sln
+dotnet build FineUI.Core.QuickStart.sln -c Release --no-restore
+```
+
+## LocalDB 简介与确认数据库已启动
 
 **LocalDB** 是 SQL Server 的精简本地版，按需启动、无需安装完整 SQL Server，专为本地开发设计。
 本项目连接的实例名为 `MSSQLLocalDB`。
@@ -64,9 +71,7 @@ sqllocaldb stop  MSSQLLocalDB   :: 停止实例
 sqllocaldb create MSSQLLocalDB  :: 若实例不存在则创建
 ```
 
----
-
-## 三、数据库与 EF Core 说明
+## 数据库与 EF Core 说明
 
 ### 连接字符串
 
@@ -94,7 +99,7 @@ sqllocaldb create MSSQLLocalDB  :: 若实例不存在则创建
 |------|------|
 | `20240909140512_InitialCreate.cs` | 初始迁移：定义如何创建 `Movies` 表 |
 | `MovieContextModelSnapshot.cs` | 当前模型的快照，EF 用它比对下次的模型差异 |
-| `Movies.data.sql` | **示例种子数据**（几条电影记录），非 EF 自动执行，需手动导入（见第五节） |
+| `Movies.data.sql` | **示例种子数据**（几条电影记录），非 EF 自动执行，需手动导入（见「（可选）导入示例数据」） |
 
 > 数据库里有一张 `__EFMigrationsHistory` 表，记录"哪些迁移已经跑过"，EF 据此做增量更新。
 
@@ -119,28 +124,28 @@ using (var scope = app.ApplicationServices.CreateScope())
 
 所以你**不需要手动建库**，直接运行项目即可。
 
----
+## 运行
 
-## 四、启动项目
+在仓库根目录启动（首次会先还原 NuGet 包并编译）：
 
-### 方式一：命令行
-
-```bash
-cd FineUI.Core.QuickStart
-dotnet run
+```powershell
+dotnet run --project FineUI.Core.QuickStart/FineUI.Core.QuickStart.csproj
 ```
 
-启动后访问控制台打印的地址（默认约 `http://localhost:5000`）。
+启动后打开 <http://localhost:52419/> —— 地址来自 `FineUI.Core.QuickStart/Properties/launchSettings.json` 里的 `FineUI.Core.QuickStart` 配置。
 
-### 方式二：Visual Studio
+也可以用 Visual Studio 打开 `FineUI.Core.QuickStart.sln`：
 
-用支持 .NET 10 的 Visual Studio 打开 `FineUI.Core.QuickStart.sln`，按 F5 运行。
+- 按 F5 / Ctrl+F5 默认走上面那个 `FineUI.Core.QuickStart` 配置；
+- 想用 IIS Express，就在工具栏把启动配置切成 `IIS Express`，地址是 **http://localhost:52424/**。
+
+端口被占用时，改 `Properties/launchSettings.json` 里对应配置的 `applicationUrl` 即可。
 
 首次运行时，程序会自动在 LocalDB 上创建 `MovieContext` 数据库和 `Movies` 表。
 
----
+**不需要授权文件**：本仓库引用的是公共 NuGet 包 `FineUI.Core`（社区版），社区版不做授权校验，克隆下来就能直接跑。
 
-## 五、（可选）导入示例数据
+## （可选）导入示例数据
 
 `Migrations/InitialCreate` 只建**空表**。若想看到示例电影数据，手动执行一次种子脚本：
 
@@ -150,15 +155,13 @@ sqlcmd -S "(localdb)\MSSQLLocalDB" -d MovieContext -i FineUI.Core.QuickStart\Mig
 
 （或在 VS 的 SQL Server 对象资源管理器 / SSMS 里打开 `Movies.data.sql` 执行。）
 
----
-
-## 六、常见问题
+## 常见问题
 
 **运行报错：`transient failure ... EnableRetryOnFailure`（EF Core 连接异常）**
 
 这多半不是"网络抖动"，真正原因通常是**数据库还没创建 / LocalDB 没启动**：
 
-1. 先按第二节确认 `sqllocaldb info MSSQLLocalDB` 显示 `State: Running`；
+1. 先按「LocalDB 简介与确认数据库已启动」确认 `sqllocaldb info MSSQLLocalDB` 显示 `State: Running`；
 2. 本项目已配置启动时自动 `Database.Migrate()` 建库，正常情况下运行即可自愈；
 3. 若仍报错，检查 `appsettings.json` 的连接字符串实例名是否与 `sqllocaldb info` 里一致。
 
@@ -170,27 +173,17 @@ sqlcmd -S "(localdb)\MSSQLLocalDB" -d MovieContext -i FineUI.Core.QuickStart\Mig
 sqlcmd -S "(localdb)\MSSQLLocalDB" -Q "DROP DATABASE MovieContext"
 ```
 
----
-
-## 七、发布历史
+## 发布历史
 
 ### 2026-09-30 v16.0.0
 
 - 普通控件回发参数统一以 F.js 客户端事件名开头；升级时应同时替换 FineUI.Core.dll 与客户端资源。
-
 - 删除 `Startup.cs` 中 FineUI JSON 模型绑定器和 RazorForms 过滤器的手工登记，现由 `AddFineUI` 自动完成。
-## 仓库与依赖边界
-
-本仓库是 FineUI.Core.QuickStart 的唯一真相源。项目文件已声明从公共软件包仓库获取的 `FineUI.Core` NuGet 依赖；仓库不提交 FineUI DLL、JAR 或框架源码。
 
 ## 许可边界
 
 本仓库中由合肥三生石上软件有限公司拥有著作权的示例或应用项目源代码采用 [MIT 许可证](LICENSE)。FineUI 各端框架源码、二进制软件包、内嵌的 FineUI.js 运行时以及 FineUI 名称、标识和商标不属于 MIT 授权范围，仍适用各自的商业或社区版许可。具体边界见 [NOTICE.md](NOTICE.md)。
-## 构建
 
-安装 .NET 8 SDK 后，在仓库根目录运行：
+## 参与贡献
 
-```powershell
-dotnet restore FineUI.Core.QuickStart.sln
-dotnet build FineUI.Core.QuickStart.sln -c Release --no-restore
-```
+请先阅读 `CONTRIBUTING.md`。安全问题请按 `SECURITY.md` 私下报告。
