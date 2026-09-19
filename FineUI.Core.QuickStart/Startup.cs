@@ -23,8 +23,8 @@ namespace FineUI.Core.QuickStart
             Configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        // 运行时调用此方法；在这里把服务注册进容器。
+        // 如何配置应用的更多说明见 https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDistributedMemoryCache();
@@ -52,7 +52,7 @@ namespace FineUI.Core.QuickStart
                 options.UseSqlServer(Configuration.GetConnectionString("SQLServer")));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // 运行时调用此方法；在这里配置 HTTP 请求管道。
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // 启动时自动应用 EF Core 迁移：库不存在则建库并跑全部迁移；
