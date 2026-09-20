@@ -173,13 +173,6 @@ sqlcmd -S "(localdb)\MSSQLLocalDB" -d MovieContext -i FineUI.Core.QuickStart\Mig
 sqlcmd -S "(localdb)\MSSQLLocalDB" -Q "DROP DATABASE MovieContext"
 ```
 
-## 发布历史
-
-### 2026-09-30 v16.0.0
-
-- 普通控件回发参数统一以 F.js 客户端事件名开头；升级时应同时替换 FineUI.Core.dll 与客户端资源。
-- 删除 `Startup.cs` 中 FineUI JSON 模型绑定器和 RazorForms 过滤器的手工登记，现由 `AddFineUI` 自动完成。
-
 ## 许可边界
 
 本仓库中由合肥三生石上软件有限公司拥有著作权的示例或应用项目源代码采用 [MIT 许可证](LICENSE)。FineUI 各端框架源码、二进制软件包、内嵌的 FineUI.js 运行时以及 FineUI 名称、标识和商标不属于 MIT 授权范围，仍适用各自的商业或社区版许可。具体边界见 [NOTICE.md](NOTICE.md)。
