@@ -28,7 +28,7 @@
                 <Columns>
                     <f:RowNumberField />
                     <f:RenderField For="Movies.First().Title" QuickSortField="true" ExpandUnusedSpace="true" />
-                    <f:RenderField For="Movies.First().ReleaseDate" QuickSortField="true" FieldFormat="yyyy-MM-dd" Width="150" />
+                    <f:RenderField For="Movies.First().ReleaseDate" QuickSortField="true" FieldType="Date" Renderer="Date" RendererArgument="yyyy-MM-dd" Width="150" />
                     <f:RenderField For="Movies.First().Genre" QuickSortField="true" />
                     <f:RenderField For="Movies.First().Price" QuickSortField="true" />
                     <f:RenderField EnableColumnHide="false" EnableHeaderMenu="false" Width="100">
