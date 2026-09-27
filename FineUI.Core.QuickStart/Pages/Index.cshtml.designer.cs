@@ -15,6 +15,7 @@ namespace FineUI.Core.QuickStart.Pages
 		protected FineUI.Core.Tree treeMenu;
 		protected FineUI.Core.Panel bodyRegion;
 		protected FineUI.Core.Panel topPanel;
+		protected FineUI.Core.Button btnCollapseSidebar;
 		protected FineUI.Core.Button btnThemeSelect;
 		protected FineUI.Core.TabStrip mainTabStrip;
 		protected FineUI.Core.Tab tabHomepage;
