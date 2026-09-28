@@ -55,3 +55,4 @@ NuGet.Config
 *.local.sln
 FineUI*.lic*.config
 FineUI.Enterprise.props
+FineUI.Core.Enterprise.targets
