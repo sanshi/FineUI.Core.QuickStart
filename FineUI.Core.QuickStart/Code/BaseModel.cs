@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -11,6 +13,17 @@ namespace FineUI.Core.QuickStart
 {
     public class BaseModel : PageModel
     {
+        public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        {
+            base.OnPageHandlerExecuting(context);
+
+            if (HttpMethods.IsGet(Request.Method) && context.Result == null)
+            {
+                // 公共偏好先于单页设置；AJAX 回发继续使用恢复后的页面配置。
+                AppPageManagerInitializer.Initialize(PageManager.Instance, Request);
+            }
+        }
+
         #region IsPostBack
 
         /// <summary>

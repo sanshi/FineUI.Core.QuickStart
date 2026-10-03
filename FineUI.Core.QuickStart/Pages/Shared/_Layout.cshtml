@@ -15,27 +15,6 @@
 <body>
     @Html.AntiForgeryToken()
 
-    @{
-        var pm = F.PageManager;
-
-        // 主题
-        var themeCookie = Context.Request.Cookies["Theme"];
-        if (!String.IsNullOrEmpty(themeCookie))
-        {
-            string themeValue = themeCookie;
-
-            Theme theme;
-            if (Enum.TryParse<Theme>(themeValue, true, out theme))
-            {
-                pm.CustomTheme(String.Empty);
-                pm.Theme(theme);
-            }
-            else
-            {
-                pm.CustomTheme(themeValue);
-            }
-        }
-    }
     @F.PageManager
 
     @RenderSection("body", true)
