@@ -12,6 +12,12 @@
 
 适合作为学习 FineUI.Core、或快速起步搭建自己项目的模板。
 
+<!-- fineui-community:start -->
+## 加入 FineUI 社区
+
+欢迎[加入 FineUI 社区](https://fineui.com/fans/)，一站式获取社区版、完整示例、空项目、快速入门和 AppBox 等配套资源，及时了解版本更新，交流控件用法与项目实践。**FineUI.Core、FineUI.Pro 与 FineUI.Java 社区版均可永久免费商用**，欢迎一起分享经验、讨论问题。
+<!-- fineui-community:end -->
+
 ## 环境要求
 
 | 依赖 | 说明 |
