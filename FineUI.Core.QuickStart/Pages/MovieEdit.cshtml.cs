@@ -59,7 +59,13 @@ namespace FineUI.Core.QuickStart
             try
             {
                 await DB.SaveChangesAsync();
-                Alert.Show("修改成功！", string.Empty, MessageBoxIcon.Success, ActiveWindow.GetHidePostBackReference());
+                // 用户确认修改结果后关闭窗体，再由父页的关闭事件刷新电影列表。
+                new Alert
+                {
+                    Message = "修改成功！",
+                    MessageBoxIcon = MessageBoxIcon.Success,
+                    OkCommand = ClientCommand.HideActiveWindowPostBack()
+                }.Show();
             }
             catch (DbUpdateConcurrencyException)
             {
