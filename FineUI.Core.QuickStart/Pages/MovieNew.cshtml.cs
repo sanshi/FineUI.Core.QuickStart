@@ -33,7 +33,7 @@ namespace FineUI.Core.QuickStart
             {
                 Message = "保存成功！",
                 MessageBoxIcon = MessageBoxIcon.Success,
-                OkCommand = ClientCommand.HideActiveWindowPostBack()
+                OkCommand = ActiveWindow.CreateHidePostBackCommand()
             }.Show();
         }
 
