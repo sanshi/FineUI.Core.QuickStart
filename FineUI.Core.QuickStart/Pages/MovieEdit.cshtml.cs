@@ -64,7 +64,7 @@ namespace FineUI.Core.QuickStart
                 {
                     Message = "修改成功！",
                     MessageBoxIcon = MessageBoxIcon.Success,
-                    OkCommand = ActiveWindow.CreateHidePostBackCommand()
+                    OkCommand = ActiveWindow.HidePostBackCommand()
                 }.Show();
             }
             catch (DbUpdateConcurrencyException)
