@@ -16,18 +16,19 @@ namespace FineUI.Core.QuickStart
 
         #endregion
 
-        #region OnGet
+        #region Page_Get
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task Page_GetAsync(object sender, EventArgs e)
         {
+            // 本页路由为 /MovieEdit/2，主键在路径段中，不在 ?id 查询参数中。
+            int.TryParse(Request.RouteValues["id"]?.ToString(), out var id);
             Movie = await DB.Movies.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Movie == null)
             {
-                return Content("无效参数！");
+                FineUI.Core.PageContext.AbortPage("无效参数！", ActiveWindow.HideCommand());
+                return;
             }
-
-            return Page();
         }
 
         #endregion

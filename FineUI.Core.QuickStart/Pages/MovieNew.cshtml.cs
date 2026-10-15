@@ -13,7 +13,7 @@ namespace FineUI.Core.QuickStart
 
         #endregion
 
-        public void OnGet()
+        public void Page_Get(object sender, EventArgs e)
         {
 
         }
