@@ -13,10 +13,6 @@ namespace FineUI.Core.QuickStart
 
         #endregion
 
-        public void Page_Get(object sender, EventArgs e)
-        {
-
-        }
 
         protected async Task btnSaveClose_ClickAsync(object sender, EventArgs e)
         {

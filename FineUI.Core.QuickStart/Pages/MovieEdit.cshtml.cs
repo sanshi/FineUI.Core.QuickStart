@@ -14,20 +14,27 @@ namespace FineUI.Core.QuickStart
         [BindProperty]
         public Movie Movie { get; set; }
 
+        private Movie _storedMovie;
+
         #endregion
 
-        #region Page_Get
+        #region Page_Init
 
-        public async Task Page_GetAsync(object sender, EventArgs e)
+        public async Task Page_InitAsync(object sender, EventArgs e)
         {
             // 本页路由为 /MovieEdit/2，主键在路径段中，不在 ?id 查询参数中。
             int.TryParse(Request.RouteValues["id"]?.ToString(), out var id);
-            Movie = await DB.Movies.FirstOrDefaultAsync(m => m.ID == id);
+            _storedMovie = await DB.Movies.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Movie == null)
+            if (_storedMovie == null)
             {
                 FineUI.Core.PageContext.AbortPage("无效参数！", ActiveWindow.HideCommand());
                 return;
+            }
+
+            if (!IsPostBack)
+            {
+                Movie = _storedMovie;
             }
         }
 
@@ -55,7 +62,11 @@ namespace FineUI.Core.QuickStart
                 return;
             }
 
-            DB.Attach(Movie).State = EntityState.Modified;
+            // 保存本次按路由主键查到的电影，忽略可修改的表单主键。
+            _storedMovie.Title = Movie.Title;
+            _storedMovie.ReleaseDate = Movie.ReleaseDate;
+            _storedMovie.Genre = Movie.Genre;
+            _storedMovie.Price = Movie.Price;
 
             try
             {
@@ -70,7 +81,7 @@ namespace FineUI.Core.QuickStart
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DB.Movies.Any(e => e.ID == Movie.ID))
+                if (!DB.Movies.Any(e => e.ID == _storedMovie.ID))
                 {
                     Alert.Show("指定的电影不存在：" + Movie.Title);
                 }
