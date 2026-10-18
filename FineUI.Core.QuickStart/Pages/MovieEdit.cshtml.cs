@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FineUI.Core.QuickStart
 {
-    public partial class MovieEditModel : BaseModel
+    public partial class MovieEditModel : PageBase
     {
         
         #region Fields

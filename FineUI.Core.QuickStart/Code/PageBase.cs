@@ -10,7 +10,7 @@ using System.Web;
 
 namespace FineUI.Core.QuickStart
 {
-    public class BaseModel : PageModel
+    public class PageBase : PageModel
     {
         public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
         {
@@ -131,7 +131,7 @@ namespace FineUI.Core.QuickStart
             {
                 if (_db == null)
                 {
-                    _db = BaseModel.GetDbConnection();
+                    _db = PageBase.GetDbConnection();
                 }
                 return _db;
             }

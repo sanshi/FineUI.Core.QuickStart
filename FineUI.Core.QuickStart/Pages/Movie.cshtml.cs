@@ -10,7 +10,7 @@ using System.Data;
 
 namespace FineUI.Core.QuickStart
 {
-    public partial class MovieModel : BaseModel
+    public partial class MovieModel : PageBase
     {
         #region Fields
 

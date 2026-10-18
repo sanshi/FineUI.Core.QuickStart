@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FineUI.Core.QuickStart.Pages
 {
-    public partial class IndexModel : BaseModel
+    public partial class IndexModel : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

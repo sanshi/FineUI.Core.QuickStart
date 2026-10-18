@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace FineUI.Core.QuickStart
 {
-    public partial class MovieNewModel : BaseModel
+    public partial class MovieNewModel : PageBase
     {
         #region Fields
 
