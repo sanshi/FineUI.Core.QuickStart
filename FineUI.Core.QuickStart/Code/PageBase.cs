@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,7 +9,7 @@ using System.Web;
 
 namespace FineUI.Core.QuickStart
 {
-    public class PageBase : PageModel
+    public class PageBase : FineUI.Core.FineUIPageBase
     {
         public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
         {
@@ -24,21 +23,6 @@ namespace FineUI.Core.QuickStart
             }
 
         }
-
-        #region IsPostBack
-
-        /// <summary>
-        /// 是否页面回发
-        /// </summary>
-        public bool IsPostBack
-        {
-            get
-            {
-                return FineUI.Core.PageContext.IsFineUIAjaxPostBack();
-            }
-        }
-
-        #endregion
 
         #region RegisterStartupScript
 
